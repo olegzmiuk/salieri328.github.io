@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es5", "es2015.promise", "es2015.collection"],
+    "target": "es5",
+    "sourceMap": true,
+    "module": "commonjs", // "es6" value conflicts with ng-annotate :((
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots" : ["./node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "@angular/*": ["./node_modules/@angular/*"]
+    }
+  },
+  "compileOnSave": false,
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

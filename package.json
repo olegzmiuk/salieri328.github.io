@@ -1,0 +1,46 @@
+{
+  "name": "salieri328.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint ./src/**/*.ts",
+    "start": "node ./node_modules/.bin/webpack-dev-server --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salieri328/salieri328.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salieri328/salieri328.github.io/issues"
+  },
+  "homepage": "https://github.com/salieri328/salieri328.github.io#readme",
+  "devDependencies": {
+    "angular2-template-loader": "^0.6.0",
+    "awesome-typescript-loader": "^3.0.0-beta.17",
+    "html-webpack-plugin": "^2.25.0",
+    "lodash": "^4.17.2",
+    "raw-loader": "^0.5.1",
+    "ts-loader": "^1.3.3",
+    "tslint": "^4.2.0",
+    "tslint-loader": "^3.3.0",
+    "typescript": "^2.1.4",
+    "typings": "^2.1.0",
+    "webpack": "^2.1.0-beta.28",
+    "webpack-dev-server": "^2.1.0-beta.12"
+  },
+  "dependencies": {
+    "@angular/common": "^2.4.1",
+    "@angular/compiler": "^2.4.1",
+    "@angular/core": "^2.4.1",
+    "@angular/platform-browser": "^2.4.1",
+    "@angular/platform-browser-dynamic": "^2.4.1",
+    "es6-shim": "^0.35.2",
+    "reflect-metadata": "^0.1.9",
+    "rxjs": "^5.0.2",
+    "zone.js": "^0.7.4"
+  }
+}
