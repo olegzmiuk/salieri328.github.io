@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/salieri328/salieri328.github.io#readme",
   "devDependencies": {
+    "@types/node": "^7.0.0",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^3.0.0-beta.17",
     "html-webpack-plugin": "^2.25.0",
@@ -36,6 +37,9 @@
     "@angular/common": "^2.4.1",
     "@angular/compiler": "^2.4.1",
     "@angular/core": "^2.4.1",
+    "@angular/forms": "^2.4.3",
+    "@angular/http": "^2.4.3",
+    "@angular/material": "^2.0.0-beta.1",
     "@angular/platform-browser": "^2.4.1",
     "@angular/platform-browser-dynamic": "^2.4.1",
     "es6-shim": "^0.35.2",
