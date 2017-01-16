@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpack = require('html-webpack-plugin');
 const ChunkWebpack = webpack.optimize.CommonsChunkPlugin;
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const rootDir = path.resolve(__dirname, './');
 
@@ -34,7 +35,11 @@ let config = {
     new webpack.ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
       rootDir
-    )
+    ),
+    new CopyWebpackPlugin([{
+      from: 'src/',
+      to: './'
+    }])
   ],
   resolve: {
     extensions: [ '.js', '.ts', '.html' ]
