@@ -5,6 +5,8 @@ import { DragulaModule } from 'ng2-dragula';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 
+import { StorageService } from './services';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -14,7 +16,9 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent
   ],
-  providers: [],
+  providers: [
+    StorageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

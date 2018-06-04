@@ -2,9 +2,19 @@
   <div class="title">
     Pit
   </div>
-  <div [dragula]='"bag"' class="container">
+  <div [dragula]="'bag'" class="container" id="pit">
+    <!-- <div *ngFor="let car of cars; let i = index">
+      <car [car]="car"></car>
+    </div> -->
+
+    <!-- <car name="car1"></car>
+    <car name="car3"></car>
     <car name="car1"></car>
     <car name="car2"></car>
+    <car name="car3"></car>
+    <car name="car1"></car>
+    <car name="car2"></car>
+    <car name="car3"></car> -->
   </div>
 </div>
 
@@ -12,8 +22,11 @@
   <div class="title">
     Lobby
   </div>
-  <div [dragula]='"bag"' class="container">
-    <car name="car3"></car>
-    <car name="car4"></car>
+  <div [dragula]="'bag'" class="container" id="lobby">
+    <div *ngFor="let car of cars; let i = index" style="display: flex">
+      <car [car]="car" (onSave)="saveGrid(value)"></car>
+    </div>
   </div>
 </div>
+
+<div class="reset" (click)="resetData()">Reset</div>

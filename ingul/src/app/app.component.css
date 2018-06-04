@@ -1,14 +1,13 @@
 .pit,
 .lobby {
   display: table;
-  margin: 5%;
+  margin: 20px;
   box-shadow: 0px 0px 15px #bbb;
-  padding: 20px;
 }
 
 .pit {
-  width: 25%;
-  height: 500px;
+  width: 370px;
+  height: 370px;
   float: left;
 }
 
@@ -21,6 +20,8 @@
 .container {
   display: table-cell;
   height: 100%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .title {

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { DragulaModule } from 'ng2-dragula';
 
 import {
@@ -7,6 +8,7 @@ import {
 
 @NgModule({
   imports: [
+    FormsModule,
     DragulaModule
   ],
   declarations: [

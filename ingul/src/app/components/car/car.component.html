@@ -1,3 +1,8 @@
 <div class="car">
-  {{ name }}
+  <div [hidden]="isEditing"
+       class="title"
+       (click)="editCar()">
+    {{ car.name }}
+  </div>
+  <input [hidden]="!isEditing" type="text" [(ngModel)]="car.name">
 </div>
