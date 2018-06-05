@@ -5,7 +5,7 @@
       P I T
     </div>
     <div [dragula]="'bag'" class="container" id="pit">
-      <div *ngFor="let car of filterCarsByPlacement(cars, 'pit'); let i = index" id="{{ car.id }}">
+      <div *ngFor="let car of filterCarsByPlacement(cars, 'pit'); let i = index" class="car-container" id="{{ car.id }}">
         <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
       </div>
     </div>
@@ -19,7 +19,7 @@
          [dragulaModel]="cars"
          class="container"
          id="lobby">
-      <div *ngFor="let car of filterCarsByPlacement(cars, 'lobby'); let i = index" id="{{ car.id }}">
+      <div *ngFor="let car of filterCarsByPlacement(cars, 'lobby'); let i = index" class="car-container" id="{{ car.id }}">
         <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
       </div>
       <div class="create-new" (click)="createNewCar()">+</div>
