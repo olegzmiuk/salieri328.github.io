@@ -4,9 +4,21 @@
     <div class="title">
       P I T
     </div>
-    <div [dragula]="'bag'" class="container" id="pit">
-      <div *ngFor="let car of filterCarsByPlacement(cars, 'pit'); let i = index" class="car-container" id="{{ car.id }}">
-        <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
+    <div class="container">
+      <div [dragula]="'bag'" class="pit-container" id="pit1">
+        <div *ngFor="let car of filterCarsByPlacement(cars, 'pit1')" class="car-container" id="{{ car.id }}">
+          <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
+        </div>
+      </div>
+      <div [dragula]="'bag'" class="pit-container" id="pit2">
+        <div *ngFor="let car of filterCarsByPlacement(cars, 'pit2')" class="car-container" id="{{ car.id }}">
+          <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
+        </div>
+      </div>
+      <div [dragula]="'bag'" class="pit-container" id="pit3">
+        <div *ngFor="let car of filterCarsByPlacement(cars, 'pit3')" class="car-container" id="{{ car.id }}">
+          <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
+        </div>
       </div>
     </div>
   </div>

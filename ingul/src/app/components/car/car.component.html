@@ -5,6 +5,10 @@
        (click)="editCar()">
     {{ car.name }}
   </div>
-  <input [hidden]="!isEditing" type="text" class="edit-field" [(ngModel)]="car.name">
+  <input [hidden]="!isEditing"
+         type="text"
+         class="edit-field"
+         [(ngModel)]="car.name"
+         (focusout)="isEditing && cancel()">
   <div (click)="switchColor()" class="color-switcher">color</div>
 </div>

@@ -19,15 +19,10 @@ export class AppComponent {
       // console.log('drag', value);
     });
     dragulaService.drop.subscribe(([bag, car, to, from]) => {
-      if (to.id === 'pit' && from.id === 'lobby') {
+      if (to.id !== from.id) {
         let carObject = _.find(this.cars, {id: +car.id});
-        carObject ? carObject.placement = 'pit' : null;
+        carObject ? carObject.placement = to.id : null;
       }
-      if (to.id === 'lobby' && from.id === 'pit') {
-        let carObject = _.find(this.cars, {id: +car.id});
-        carObject ? carObject.placement = 'lobby' : null;
-      }
-
       this.saveGrid();
     });
 
@@ -67,7 +62,7 @@ export class AppComponent {
       {
         name: 'car 5',
         id: 5,
-        placement: 'pit',
+        placement: 'pit1',
         color: 'green'
       }
     ];
