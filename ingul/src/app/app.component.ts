@@ -16,16 +16,19 @@ export class AppComponent {
     private dragulaService: DragulaService
   ) {
     dragulaService.drag.subscribe((value:any) => {
-      console.log('drag', value);
-      // this.onDrag(value.slice(1));
+      // console.log('drag', value);
     });
-    dragulaService.drop.subscribe((value:any) => {
-      console.log('drop', value);
-      // this.onDrag(value.slice(1));
-    });
-    dragulaService.dropModel.subscribe((value:any) => {
-      console.log('dropModel', value);
-      // this.onDrag(value.slice(1));
+    dragulaService.drop.subscribe(([bag, car, to, from]) => {
+      if (to.id === 'pit' && from.id === 'lobby') {
+        let carObject = _.find(this.cars, {id: +car.id});
+        carObject ? carObject.placement = 'pit' : null;
+      }
+      if (to.id === 'lobby' && from.id === 'pit') {
+        let carObject = _.find(this.cars, {id: +car.id});
+        carObject ? carObject.placement = 'lobby' : null;
+      }
+
+      this.saveGrid();
     });
 
     this.cars = storageService.getData();
@@ -33,8 +36,6 @@ export class AppComponent {
     if (!this.cars.length) {
       this.initCars();
     }
-
-
   }
 
   initCars() {

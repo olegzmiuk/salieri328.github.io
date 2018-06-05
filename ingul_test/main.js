@@ -41,7 +41,7 @@ module.exports = ".wrapper {\n  position: relative;\n}\n\n.pit,\n.lobby {\n  pad
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n\n  <div class=\"pit\">\n    <div class=\"title\">\n      P I T\n    </div>\n    <div [dragula]=\"'bag'\" class=\"container\" id=\"pit\">\n      <div *ngFor=\"let car of filterCarsByPlacement(cars, 'pit'); let i = index\" style=\"display: inline-block;\">\n        <car [car]=\"car\" (onSave)=\"saveGrid(value)\"></car>\n      </div>\n      <!-- <div *ngFor=\"let car of cars; let i = index\">\n        <car [car]=\"car\"></car>\n      </div> -->\n\n      <!-- <car name=\"car1\"></car>\n      <car name=\"car3\"></car>\n      <car name=\"car1\"></car>\n      <car name=\"car2\"></car>\n      <car name=\"car3\"></car>\n      <car name=\"car1\"></car>\n      <car name=\"car2\"></car>\n      <car name=\"car3\"></car> -->\n    </div>\n  </div>\n\n  <div class=\"lobby\">\n    <div class=\"title\">\n      L O B B Y\n    </div>\n    <div [dragula]=\"'bag'\"\n         [dragulaModel]=\"cars\"\n         class=\"container\"\n         id=\"lobby\">\n      <div *ngFor=\"let car of filterCarsByPlacement(cars, 'lobby'); let i = index\">\n        <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n      </div>\n      <div class=\"create-new\" (click)=\"createNewCar()\">+</div>\n    </div>\n  </div>\n\n  <div class=\"reset\" (click)=\"resetData()\">Reset</div>\n\n</div>\n"
+module.exports = "<div class=\"wrapper\">\n\n  <div class=\"pit\">\n    <div class=\"title\">\n      P I T\n    </div>\n    <div [dragula]=\"'bag'\" class=\"container\" id=\"pit\">\n      <div *ngFor=\"let car of filterCarsByPlacement(cars, 'pit'); let i = index\" id=\"{{ car.id }}\">\n        <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"lobby\">\n    <div class=\"title\">\n      L O B B Y\n    </div>\n    <div [dragula]=\"'bag'\"\n         [dragulaModel]=\"cars\"\n         class=\"container\"\n         id=\"lobby\">\n      <div *ngFor=\"let car of filterCarsByPlacement(cars, 'lobby'); let i = index\" id=\"{{ car.id }}\">\n        <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n      </div>\n      <div class=\"create-new\" (click)=\"createNewCar()\">+</div>\n    </div>\n  </div>\n\n  <div class=\"reset\" (click)=\"resetData()\">Reset</div>\n\n</div>\n"
 
 /***/ }),
 
@@ -76,19 +76,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var AppComponent = /** @class */ (function () {
     function AppComponent(storageService, dragulaService) {
+        var _this = this;
         this.storageService = storageService;
         this.dragulaService = dragulaService;
         dragulaService.drag.subscribe(function (value) {
-            console.log('drag', value);
-            // this.onDrag(value.slice(1));
+            // console.log('drag', value);
         });
-        dragulaService.drop.subscribe(function (value) {
-            console.log('drop', value);
-            // this.onDrag(value.slice(1));
-        });
-        dragulaService.dropModel.subscribe(function (value) {
-            console.log('dropModel', value);
-            // this.onDrag(value.slice(1));
+        dragulaService.drop.subscribe(function (_a) {
+            var bag = _a[0], car = _a[1], to = _a[2], from = _a[3];
+            if (to.id === 'pit' && from.id === 'lobby') {
+                var carObject = lodash__WEBPACK_IMPORTED_MODULE_1__["find"](_this.cars, { id: +car.id });
+                carObject ? carObject.placement = 'pit' : null;
+            }
+            if (to.id === 'lobby' && from.id === 'pit') {
+                var carObject = lodash__WEBPACK_IMPORTED_MODULE_1__["find"](_this.cars, { id: +car.id });
+                carObject ? carObject.placement = 'lobby' : null;
+            }
+            _this.saveGrid();
         });
         this.cars = storageService.getData();
         if (!this.cars.length) {
