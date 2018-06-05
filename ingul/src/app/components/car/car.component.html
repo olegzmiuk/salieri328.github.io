@@ -1,8 +1,10 @@
-<div class="car">
+<div class="car {{ car.color }}">
+  <div (click)="delete()" class="delete-btn">x</div>
   <div [hidden]="isEditing"
        class="title"
        (click)="editCar()">
     {{ car.name }}
   </div>
-  <input [hidden]="!isEditing" type="text" [(ngModel)]="car.name">
+  <input [hidden]="!isEditing" type="text" class="edit-field" [(ngModel)]="car.name">
+  <div (click)="switchColor()" class="color-switcher">color</div>
 </div>

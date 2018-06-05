@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".pit,\n.lobby {\n  display: table;\n  margin: 20px;\n  box-shadow: 0px 0px 15px #bbb;\n}\n\n.pit {\n  width: 370px;\n  height: 370px;\n  float: left;\n}\n\n.lobby {\n  width: 45%;\n  height: 500px;\n  float: left;\n}\n\n.container {\n  display: table-cell;\n  height: 100%;\n  padding: 20px;\n  background: rgba(255, 255, 255, 0.9);\n}\n\n.title {\n  display: table-caption;\n  padding: 0 0 20px;\n  font-size: 20px;\n  text-align: center;\n}\n"
+module.exports = ".wrapper {\n  position: relative;\n}\n\n.pit,\n.lobby {\n  padding: 20px;\n}\n\n.pit {\n  width: 370px;\n  height: 370px;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n\n.lobby {\n  margin-left: 420px;\n  height: 600px;\n}\n\n.container {\n  display: flex;\n  height: 100%;\n  padding: 20px;\n  background: rgba(255, 255, 255, 0.9);\n  box-shadow: 0px 0px 15px #bbb;\n}\n\n.title {\n  padding: 0 0 20px;\n  font-size: 20px;\n  text-align: center;\n}\n\n.create-new {\n  margin-top: 30px;\n  margin-left: 10px;\n  text-align: center;\n  font-size: 30px;\n  line-height: 46px;\n  height: 50px;\n  width: 50px;\n  background: rgba(0, 0, 0, 0.3);\n  border-radius: 100%;\n  color: #fff;\n  cursor: pointer;\n}\n\n.reset {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ".pit,\n.lobby {\n  display: table;\n  margin: 20px;\n  box-sha
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"pit\">\n  <div class=\"title\">\n    Pit\n  </div>\n  <div [dragula]=\"'bag'\" class=\"container\" id=\"pit\">\n    <!-- <div *ngFor=\"let car of cars; let i = index\">\n      <car [car]=\"car\"></car>\n    </div> -->\n\n    <!-- <car name=\"car1\"></car>\n    <car name=\"car3\"></car>\n    <car name=\"car1\"></car>\n    <car name=\"car2\"></car>\n    <car name=\"car3\"></car>\n    <car name=\"car1\"></car>\n    <car name=\"car2\"></car>\n    <car name=\"car3\"></car> -->\n  </div>\n</div>\n\n<div class=\"lobby\">\n  <div class=\"title\">\n    Lobby\n  </div>\n  <div [dragula]=\"'bag'\" class=\"container\" id=\"lobby\">\n    <div *ngFor=\"let car of cars; let i = index\" style=\"display: flex\">\n      <car [car]=\"car\" (onSave)=\"saveGrid(value)\"></car>\n    </div>\n  </div>\n</div>\n\n<div class=\"reset\" (click)=\"resetData()\">Reset</div>\n"
+module.exports = "<div class=\"wrapper\">\n\n  <div class=\"pit\">\n    <div class=\"title\">\n      P I T\n    </div>\n    <div [dragula]=\"'bag'\" class=\"container\" id=\"pit\">\n      <div *ngFor=\"let car of filterCarsByPlacement(cars, 'pit'); let i = index\" style=\"display: inline-block;\">\n        <car [car]=\"car\" (onSave)=\"saveGrid(value)\"></car>\n      </div>\n      <!-- <div *ngFor=\"let car of cars; let i = index\">\n        <car [car]=\"car\"></car>\n      </div> -->\n\n      <!-- <car name=\"car1\"></car>\n      <car name=\"car3\"></car>\n      <car name=\"car1\"></car>\n      <car name=\"car2\"></car>\n      <car name=\"car3\"></car>\n      <car name=\"car1\"></car>\n      <car name=\"car2\"></car>\n      <car name=\"car3\"></car> -->\n    </div>\n  </div>\n\n  <div class=\"lobby\">\n    <div class=\"title\">\n      L O B B Y\n    </div>\n    <div [dragula]=\"'bag'\"\n         [dragulaModel]=\"cars\"\n         class=\"container\"\n         id=\"lobby\">\n      <div *ngFor=\"let car of filterCarsByPlacement(cars, 'lobby'); let i = index\">\n        <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n      </div>\n      <div class=\"create-new\" (click)=\"createNewCar()\">+</div>\n    </div>\n  </div>\n\n  <div class=\"reset\" (click)=\"resetData()\">Reset</div>\n\n</div>\n"
 
 /***/ }),
 
@@ -56,9 +56,11 @@ module.exports = "<div class=\"pit\">\n  <div class=\"title\">\n    Pit\n  </div
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var ng2_dragula__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ng2-dragula */ "./node_modules/ng2-dragula/index.js");
-/* harmony import */ var ng2_dragula__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ng2_dragula__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services */ "./src/app/services/index.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var ng2_dragula__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ng2-dragula */ "./node_modules/ng2-dragula/index.js");
+/* harmony import */ var ng2_dragula__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ng2_dragula__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services */ "./src/app/services/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -71,16 +73,21 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var AppComponent = /** @class */ (function () {
     function AppComponent(storageService, dragulaService) {
         this.storageService = storageService;
         this.dragulaService = dragulaService;
-        // dragulaService.drag.subscribe((value:any) => {
-        //   console.log('drag', value);
-        //   // this.onDrag(value.slice(1));
-        // });
+        dragulaService.drag.subscribe(function (value) {
+            console.log('drag', value);
+            // this.onDrag(value.slice(1));
+        });
         dragulaService.drop.subscribe(function (value) {
             console.log('drop', value);
+            // this.onDrag(value.slice(1));
+        });
+        dragulaService.dropModel.subscribe(function (value) {
+            console.log('dropModel', value);
             // this.onDrag(value.slice(1));
         });
         this.cars = storageService.getData();
@@ -92,37 +99,69 @@ var AppComponent = /** @class */ (function () {
         var carsMock = [
             {
                 name: 'car 1',
-                id: 1
+                id: 1,
+                placement: 'lobby',
+                color: 'green'
             },
             {
                 name: 'car 2',
-                id: 2
+                id: 2,
+                placement: 'lobby',
+                color: 'green'
             },
             {
                 name: 'car 3',
-                id: 3
+                id: 3,
+                placement: 'lobby',
+                color: 'red'
             },
             {
                 name: 'car 4',
-                id: 4
+                id: 4,
+                placement: 'lobby',
+                color: 'green'
+            },
+            {
+                name: 'car 5',
+                id: 5,
+                placement: 'pit',
+                color: 'green'
             }
         ];
         this.storageService.setData(carsMock);
+        this.cars = carsMock;
     };
     AppComponent.prototype.resetData = function () {
         this.storageService.setData([]);
+        window.location.reload();
     };
     AppComponent.prototype.saveGrid = function () {
         this.storageService.setData(this.cars);
+    };
+    AppComponent.prototype.createNewCar = function (car) {
+        this.cars.push({
+            id: Date.now(),
+            name: 'new car',
+            placement: 'lobby',
+            color: 'green'
+        });
+        this.storageService.setData(this.cars);
+    };
+    AppComponent.prototype.deleteCar = function (car) {
+        lodash__WEBPACK_IMPORTED_MODULE_1__["remove"](this.cars, { id: car.id });
+        this.storageService.setData(this.cars);
+    };
+    AppComponent.prototype.filterCarsByPlacement = function (cars, placement) {
+        return lodash__WEBPACK_IMPORTED_MODULE_1__["filter"](cars, { placement: placement });
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
-            styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")],
+            styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_2__["StorageService"],
-            ng2_dragula__WEBPACK_IMPORTED_MODULE_1__["DragulaService"]])
+        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_3__["StorageService"],
+            ng2_dragula__WEBPACK_IMPORTED_MODULE_2__["DragulaService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -193,7 +232,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".car {\n  display: inline-block;\n  width: 70px;\n  height: 70px;\n  margin: 10px;\n  border: 1px solid black;\n  text-align: center;\n}\n"
+module.exports = ".car {\n  position: relative;\n  display: block;\n  padding: 20px 0 25px;\n  width: 90px;\n  min-height: 45px;\n  margin: 10px;\n  border: 1px solid rgba(0, 0, 0, 0.4);\n  text-align: center;\n}\n\n.car.green {\n  background: rgba(0, 168, 0, 0.5);\n}\n\n.car.red {\n  background: rgba(224, 0, 0, 0.5);\n}\n\n.title {\n  white-space: normal;\n}\n\n.edit-field {\n  width: 88px;\n  text-align: center;\n  font-size: 14px;\n  background: none;\n  border: none;\n  outline: none;\n  background: rgba(0, 0, 0, 0.1);\n}\n\n.color-switcher {\n  position: absolute;\n  cursor: pointer;\n  right: 0px;\n  bottom: 0px;\n  padding: 0 5px;\n  font-size: 13px;\n  line-height: 20px;\n  /* height: 20px; */\n  /* width: 20px; */\n  background: rgba(0, 0, 0, 0.2);\n}\n\n.delete-btn {\n  position: absolute;\n  cursor: pointer;\n  right: -13px;\n  top: -13px;\n  width: 15px;\n  height: 15px;\n  font-size: 13px;\n  line-height: 13px;\n  border-radius: 100%;\n  /* height: 20px; */\n  /* width: 20px; */\n  background: rgba(0, 0, 0, 0.2);\n}\n"
 
 /***/ }),
 
@@ -204,7 +243,7 @@ module.exports = ".car {\n  display: inline-block;\n  width: 70px;\n  height: 70
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"car\">\n  <div [hidden]=\"isEditing\"\n       class=\"title\"\n       (click)=\"editCar()\">\n    {{ car.name }}\n  </div>\n  <input [hidden]=\"!isEditing\" type=\"text\" [(ngModel)]=\"car.name\">\n</div>\n"
+module.exports = "<div class=\"car {{ car.color }}\">\n  <div (click)=\"delete()\" class=\"delete-btn\">x</div>\n  <div [hidden]=\"isEditing\"\n       class=\"title\"\n       (click)=\"editCar()\">\n    {{ car.name }}\n  </div>\n  <input [hidden]=\"!isEditing\" type=\"text\" class=\"edit-field\" [(ngModel)]=\"car.name\">\n  <div (click)=\"switchColor()\" class=\"color-switcher\">color</div>\n</div>\n"
 
 /***/ }),
 
@@ -230,9 +269,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 var CarComponent = /** @class */ (function () {
-    function CarComponent(changeDetectorRef) {
+    function CarComponent(hostElement, changeDetectorRef) {
+        this.hostElement = hostElement;
         this.changeDetectorRef = changeDetectorRef;
         this.onSave = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.onDelete = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.isEditing = false;
     }
     CarComponent.prototype.ngOnInit = function () {
@@ -241,9 +282,17 @@ var CarComponent = /** @class */ (function () {
     CarComponent.prototype.ngOnChanges = function () {
         this.changeDetectorRef.detectChanges();
     };
+    CarComponent.prototype.switchColor = function () {
+        this.car.color === 'green' ? this.car.color = 'red' : this.car.color = 'green';
+        this.onSave.emit(this.car);
+    };
     CarComponent.prototype.editCar = function () {
-        this.previousName = this.car.name;
+        var _this = this;
         this.isEditing = true;
+        this.previousName = this.car.name;
+        setTimeout(function () {
+            _this.setFocus();
+        }, 0);
     };
     CarComponent.prototype.save = function () {
         this.isEditing = false;
@@ -253,6 +302,16 @@ var CarComponent = /** @class */ (function () {
         this.car.name = this.previousName;
         this.isEditing = false;
     };
+    CarComponent.prototype.delete = function () {
+        this.onDelete.emit(this.car);
+    };
+    CarComponent.prototype.setFocus = function () {
+        var host = this.hostElement.nativeElement;
+        var elemToFocus = host.querySelector('.edit-field');
+        if (elemToFocus) {
+            elemToFocus.focus();
+        }
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -261,6 +320,10 @@ var CarComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", Object)
     ], CarComponent.prototype, "onSave", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], CarComponent.prototype, "onDelete", void 0);
     CarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'car',
@@ -271,7 +334,8 @@ var CarComponent = /** @class */ (function () {
                 '(keyup.enter)': 'save()'
             }
         }),
-        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]])
     ], CarComponent);
     return CarComponent;
 }());

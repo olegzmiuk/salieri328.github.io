@@ -1,8 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
+import * as _ from 'lodash';
 
 export interface ICar {
   name: string;
   id: number;
+  placement?: string;
+  color?: 'green' | 'red';
 }
 
 @Injectable()

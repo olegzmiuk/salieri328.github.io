@@ -1,32 +1,57 @@
+.wrapper {
+  position: relative;
+}
+
 .pit,
 .lobby {
-  display: table;
-  margin: 20px;
-  box-shadow: 0px 0px 15px #bbb;
+  padding: 20px;
 }
 
 .pit {
   width: 370px;
   height: 370px;
-  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .lobby {
-  width: 45%;
-  height: 500px;
-  float: left;
+  margin-left: 420px;
+  height: 600px;
 }
 
 .container {
-  display: table-cell;
+  display: flex;
   height: 100%;
   padding: 20px;
   background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 15px #bbb;
 }
 
 .title {
-  display: table-caption;
   padding: 0 0 20px;
   font-size: 20px;
   text-align: center;
+}
+
+.create-new {
+  margin-top: 30px;
+  margin-left: 10px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 46px;
+  height: 50px;
+  width: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 100%;
+  color: #fff;
+  cursor: pointer;
+}
+
+.reset {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
 }

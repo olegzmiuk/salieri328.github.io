@@ -1,32 +1,43 @@
-<div class="pit">
-  <div class="title">
-    Pit
-  </div>
-  <div [dragula]="'bag'" class="container" id="pit">
-    <!-- <div *ngFor="let car of cars; let i = index">
-      <car [car]="car"></car>
-    </div> -->
+<div class="wrapper">
 
-    <!-- <car name="car1"></car>
-    <car name="car3"></car>
-    <car name="car1"></car>
-    <car name="car2"></car>
-    <car name="car3"></car>
-    <car name="car1"></car>
-    <car name="car2"></car>
-    <car name="car3"></car> -->
-  </div>
-</div>
+  <div class="pit">
+    <div class="title">
+      P I T
+    </div>
+    <div [dragula]="'bag'" class="container" id="pit">
+      <div *ngFor="let car of filterCarsByPlacement(cars, 'pit'); let i = index" style="display: inline-block;">
+        <car [car]="car" (onSave)="saveGrid(value)"></car>
+      </div>
+      <!-- <div *ngFor="let car of cars; let i = index">
+        <car [car]="car"></car>
+      </div> -->
 
-<div class="lobby">
-  <div class="title">
-    Lobby
-  </div>
-  <div [dragula]="'bag'" class="container" id="lobby">
-    <div *ngFor="let car of cars; let i = index" style="display: flex">
-      <car [car]="car" (onSave)="saveGrid(value)"></car>
+      <!-- <car name="car1"></car>
+      <car name="car3"></car>
+      <car name="car1"></car>
+      <car name="car2"></car>
+      <car name="car3"></car>
+      <car name="car1"></car>
+      <car name="car2"></car>
+      <car name="car3"></car> -->
     </div>
   </div>
-</div>
 
-<div class="reset" (click)="resetData()">Reset</div>
+  <div class="lobby">
+    <div class="title">
+      L O B B Y
+    </div>
+    <div [dragula]="'bag'"
+         [dragulaModel]="cars"
+         class="container"
+         id="lobby">
+      <div *ngFor="let car of filterCarsByPlacement(cars, 'lobby'); let i = index">
+        <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
+      </div>
+      <div class="create-new" (click)="createNewCar()">+</div>
+    </div>
+  </div>
+
+  <div class="reset" (click)="resetData()">Reset</div>
+
+</div>
