@@ -1,15 +1,17 @@
 .wrapper {
   position: relative;
+  height: 100%;
 }
 
 .pit,
 .lobby {
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .pit {
+  /* box-sizing: border-box; */
   width: 380px;
-  height: 370px;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -17,18 +19,26 @@
 
 .lobby {
   margin-left: 420px;
-  height: 600px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .pit-container {
   float: left;
-  height: 100%;
+  min-height: 80%;
+  padding-top: 20px;
+  padding-bottom: 20px;
   width: 33%;
+}
+.lobby-container {
+  height: 100%;
+  padding-top: 20px;
 }
 .container {
   /* display: flex; */
+  box-sizing: border-box;
   height: 100%;
-  padding: 20px;
+  padding: 0 20px 20px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 0px 15px #bbb;
 }
@@ -44,10 +54,16 @@
   float: left;
 }
 
-.title {
-  padding: 0 0 20px;
+.pit-title,
+.lobby-title {
   font-size: 20px;
   text-align: center;
+}
+.pit-title {
+  padding: 20px 0 0px;
+}
+.lobby-title {
+  padding: 10px 0 10px;
 }
 
 .create-new {

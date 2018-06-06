@@ -1,10 +1,10 @@
 <div class="wrapper">
 
   <div class="pit">
-    <div class="title">
-      P I T
-    </div>
     <div class="container">
+      <div class="pit-title">
+        P I T
+      </div>
       <div [dragula]="'bag'" class="pit-container" id="pit1">
         <div *ngFor="let car of filterCarsByPlacement(cars, 'pit1')" class="car-container" id="{{ car.id }}">
           <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
@@ -24,17 +24,16 @@
   </div>
 
   <div class="lobby">
-    <div class="title">
+    <div class="lobby-title">
       L O B B Y
     </div>
-    <div [dragula]="'bag'"
-         [dragulaModel]="cars"
-         class="container"
-         id="lobby">
-      <div *ngFor="let car of filterCarsByPlacement(cars, 'lobby'); let i = index" class="car-container" id="{{ car.id }}">
-        <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
+    <div class="container">
+      <div class="lobby-container" [dragula]="'bag'" id="lobby">
+        <div *ngFor="let car of filterCarsByPlacement(cars, 'lobby'); let i = index" class="car-container" id="{{ car.id }}">
+          <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
+        </div>
+        <div class="create-new" (click)="createNewCar()">+</div>
       </div>
-      <div class="create-new" (click)="createNewCar()">+</div>
     </div>
   </div>
 
