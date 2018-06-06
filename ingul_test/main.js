@@ -295,6 +295,10 @@ var CarComponent = /** @class */ (function () {
         }, 0);
     };
     CarComponent.prototype.save = function () {
+        if (!this.car.name.length) {
+            this.cancel();
+            return;
+        }
         this.isEditing = false;
         this.onSave.emit(this.car);
     };

@@ -48,6 +48,11 @@ export class CarComponent {
   }
 
   save() {
+    if (!this.car.name.length) {
+      this.cancel();
+      return;
+    }
+
     this.isEditing = false;
     this.onSave.emit(this.car);
   }
