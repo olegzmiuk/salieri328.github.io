@@ -98,11 +98,16 @@ export class AppComponent {
       placement: 'lobby',
       color: 'green'
     });
+    this.lobbyCars = this.filterCarsByPlacement(this.allCars, 'lobby');
     this.storageService.setData(this.allCars);
   }
 
   deleteCar(car) {
     _.remove(this.allCars, {id: car.id});
+    this.pit1Cars = this.filterCarsByPlacement(this.allCars, 'pit1');
+    this.pit2Cars = this.filterCarsByPlacement(this.allCars, 'pit2');
+    this.pit3Cars = this.filterCarsByPlacement(this.allCars, 'pit3');
+    this.lobbyCars = this.filterCarsByPlacement(this.allCars, 'lobby');
     this.storageService.setData(this.allCars);
   }
 
@@ -111,6 +116,6 @@ export class AppComponent {
   }
 
   refreshIndexes() {
-    
+
   }
 }

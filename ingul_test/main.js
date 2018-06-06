@@ -150,10 +150,15 @@ var AppComponent = /** @class */ (function () {
             placement: 'lobby',
             color: 'green'
         });
+        this.lobbyCars = this.filterCarsByPlacement(this.allCars, 'lobby');
         this.storageService.setData(this.allCars);
     };
     AppComponent.prototype.deleteCar = function (car) {
         lodash__WEBPACK_IMPORTED_MODULE_1__["remove"](this.allCars, { id: car.id });
+        this.pit1Cars = this.filterCarsByPlacement(this.allCars, 'pit1');
+        this.pit2Cars = this.filterCarsByPlacement(this.allCars, 'pit2');
+        this.pit3Cars = this.filterCarsByPlacement(this.allCars, 'pit3');
+        this.lobbyCars = this.filterCarsByPlacement(this.allCars, 'lobby');
         this.storageService.setData(this.allCars);
     };
     AppComponent.prototype.filterCarsByPlacement = function (allCars, placement) {
