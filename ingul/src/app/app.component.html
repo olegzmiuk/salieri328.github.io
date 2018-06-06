@@ -6,17 +6,17 @@
         P I T
       </div>
       <div [dragula]="'bag'" class="pit-container" id="pit1">
-        <div *ngFor="let car of filterCarsByPlacement(cars, 'pit1')" class="car-container" id="{{ car.id }}">
+        <div *ngFor="let car of pit1Cars" class="car-container" id="{{ car.id }}">
           <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
         </div>
       </div>
       <div [dragula]="'bag'" class="pit-container" id="pit2">
-        <div *ngFor="let car of filterCarsByPlacement(cars, 'pit2')" class="car-container" id="{{ car.id }}">
+        <div *ngFor="let car of pit2Cars" class="car-container" id="{{ car.id }}">
           <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
         </div>
       </div>
       <div [dragula]="'bag'" class="pit-container" id="pit3">
-        <div *ngFor="let car of filterCarsByPlacement(cars, 'pit3')" class="car-container" id="{{ car.id }}">
+        <div *ngFor="let car of pit3Cars" class="car-container" id="{{ car.id }}">
           <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
         </div>
       </div>
@@ -29,7 +29,7 @@
     </div>
     <div class="container">
       <div class="lobby-container" [dragula]="'bag'" id="lobby">
-        <div *ngFor="let car of filterCarsByPlacement(cars, 'lobby'); let i = index" class="car-container" id="{{ car.id }}">
+        <div *ngFor="let car of lobbyCars; let i = index" class="car-container" id="{{ car.id }}">
           <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
         </div>
         <div class="create-new" (click)="createNewCar()">+</div>

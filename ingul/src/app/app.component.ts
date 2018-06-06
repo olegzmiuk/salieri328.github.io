@@ -9,7 +9,12 @@ import { StorageService, ICar } from './services';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  cars: ICar[];
+  pit1Cars: ICar[];
+  pit2Cars: ICar[];
+  pit3Cars: ICar[];
+  lobbyCars: ICar[];
+
+  allCars: ICar[];
 
   constructor(
     private storageService: StorageService,
@@ -20,17 +25,23 @@ export class AppComponent {
     });
     dragulaService.drop.subscribe(([bag, car, to, from]) => {
       if (to.id !== from.id) {
-        let carObject = _.find(this.cars, {id: +car.id});
+        let carObject = _.find(this.allCars, {id: +car.id});
         carObject ? carObject.placement = to.id : null;
       }
+      this.refreshIndexes();
       this.saveGrid();
     });
 
-    this.cars = storageService.getData();
+    this.allCars = storageService.getData();
 
-    if (!this.cars.length) {
+    if (!this.allCars.length) {
       this.initCars();
     }
+
+    this.pit1Cars = this.filterCarsByPlacement(this.allCars, 'pit1');
+    this.pit2Cars = this.filterCarsByPlacement(this.allCars, 'pit2');
+    this.pit3Cars = this.filterCarsByPlacement(this.allCars, 'pit3');
+    this.lobbyCars = this.filterCarsByPlacement(this.allCars, 'lobby');
   }
 
   initCars() {
@@ -68,7 +79,7 @@ export class AppComponent {
     ];
 
     this.storageService.setData(carsMock);
-    this.cars = carsMock;
+    this.allCars = carsMock;
   }
 
   resetData(): void {
@@ -77,25 +88,29 @@ export class AppComponent {
   }
 
   saveGrid(): void {
-    this.storageService.setData(this.cars);
+    this.storageService.setData(this.allCars);
   }
 
   createNewCar(car) {
-    this.cars.push({
+    this.allCars.push({
       id: Date.now(),
       name: 'new car',
       placement: 'lobby',
       color: 'green'
     });
-    this.storageService.setData(this.cars);
+    this.storageService.setData(this.allCars);
   }
 
   deleteCar(car) {
-    _.remove(this.cars, {id: car.id});
-    this.storageService.setData(this.cars);
+    _.remove(this.allCars, {id: car.id});
+    this.storageService.setData(this.allCars);
   }
 
-  filterCarsByPlacement(cars: ICar[], placement: string): ICar[] {
-    return _.filter(cars, {placement: placement});
+  filterCarsByPlacement(allCars: ICar[], placement: string): ICar[] {
+    return _.filter(allCars, {placement: placement});
+  }
+
+  refreshIndexes() {
+    
   }
 }
