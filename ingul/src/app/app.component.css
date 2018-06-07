@@ -63,10 +63,11 @@
   padding: 20px 0 0px;
 }
 .lobby-title {
-  padding: 10px 0 10px;
+  text-align: left;
+  padding: 10px 0 10px 30px;
 }
 
-.create-new {
+/* .create-new {
   float: left;
   margin-top: 30px;
   margin-left: 10px;
@@ -79,12 +80,25 @@
   border-radius: 100%;
   color: #fff;
   cursor: pointer;
-}
+} */
 
-.reset {
+/* .reset {
   position: absolute;
   top: 10px;
   right: 10px;
   cursor: pointer;
   text-transform: uppercase;
+} */
+
+.menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.menu li {
+  cursor: pointer;
+  list-style: none;
+  float: right;
+  margin: 0 10px;
 }

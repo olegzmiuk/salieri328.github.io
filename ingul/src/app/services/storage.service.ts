@@ -5,6 +5,7 @@ export interface ICar {
   name: string;
   id: number;
   placement?: string;
+  sortOrder?: any;
   color?: 'green' | 'red';
 }
 

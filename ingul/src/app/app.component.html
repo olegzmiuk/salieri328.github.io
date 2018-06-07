@@ -32,11 +32,17 @@
         <div *ngFor="let car of lobbyCars; let i = index" class="car-container" id="{{ car.id }}">
           <car [car]="car" (onSave)="saveGrid($event)" (onDelete)="deleteCar($event)"></car>
         </div>
-        <div class="create-new" (click)="createNewCar()">+</div>
+        <!-- <div class="create-new" (click)="createNewCar()">+</div> -->
       </div>
     </div>
   </div>
 
-  <div class="reset" (click)="resetData()">Reset</div>
+  <ul class="menu">
+    <li (click)="resetData()">Reset</li>
+    <li (click)="createNewCar(5)">Add 5 cars</li>
+    <li (click)="createNewCar()">Add 1 car</li>
+  </ul>
+
+  <!-- <div class="reset" (click)="resetData()">Reset</div> -->
 
 </div>

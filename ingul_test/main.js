@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\n  position: relative;\n  height: 100%;\n}\n\n.pit,\n.lobby {\n  /* padding: 20px; */\n}\n\n.pit {\n  /* box-sizing: border-box; */\n  width: 380px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n\n.lobby {\n  margin-left: 420px;\n  height: 100%;\n  box-sizing: border-box;\n}\n\n.pit-container {\n  float: left;\n  min-height: 80%;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  width: 33%;\n}\n\n.lobby-container {\n  height: 100%;\n  padding-top: 20px;\n}\n\n.container {\n  /* display: flex; */\n  box-sizing: border-box;\n  height: 100%;\n  padding: 0 20px 20px;\n  background: rgba(255, 255, 255, 0.9);\n  box-shadow: 0px 0px 15px #bbb;\n}\n\n.container: after {\n  content: '';\n  display: block;\n  height: 0;\n  width: 100%;\n  clear: both;\n}\n\n.car-container {\n  float: left;\n}\n\n.pit-title,\n.lobby-title {\n  font-size: 20px;\n  text-align: center;\n}\n\n.pit-title {\n  padding: 20px 0 0px;\n}\n\n.lobby-title {\n  padding: 10px 0 10px;\n}\n\n.create-new {\n  float: left;\n  margin-top: 30px;\n  margin-left: 10px;\n  text-align: center;\n  font-size: 30px;\n  line-height: 46px;\n  height: 50px;\n  width: 50px;\n  background: rgba(0, 0, 0, 0.3);\n  border-radius: 100%;\n  color: #fff;\n  cursor: pointer;\n}\n\n.reset {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  cursor: pointer;\n  text-transform: uppercase;\n}\n"
+module.exports = ".wrapper {\n  position: relative;\n  height: 100%;\n}\n\n.pit,\n.lobby {\n  /* padding: 20px; */\n}\n\n.pit {\n  /* box-sizing: border-box; */\n  width: 380px;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n}\n\n.lobby {\n  margin-left: 420px;\n  height: 100%;\n  box-sizing: border-box;\n}\n\n.pit-container {\n  float: left;\n  min-height: 80%;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  width: 33%;\n}\n\n.lobby-container {\n  height: 100%;\n  padding-top: 20px;\n}\n\n.container {\n  /* display: flex; */\n  box-sizing: border-box;\n  height: 100%;\n  padding: 0 20px 20px;\n  background: rgba(255, 255, 255, 0.9);\n  box-shadow: 0px 0px 15px #bbb;\n}\n\n.container: after {\n  content: '';\n  display: block;\n  height: 0;\n  width: 100%;\n  clear: both;\n}\n\n.car-container {\n  float: left;\n}\n\n.pit-title,\n.lobby-title {\n  font-size: 20px;\n  text-align: center;\n}\n\n.pit-title {\n  padding: 20px 0 0px;\n}\n\n.lobby-title {\n  text-align: left;\n  padding: 10px 0 10px 30px;\n}\n\n/* .create-new {\n  float: left;\n  margin-top: 30px;\n  margin-left: 10px;\n  text-align: center;\n  font-size: 30px;\n  line-height: 46px;\n  height: 50px;\n  width: 50px;\n  background: rgba(0, 0, 0, 0.3);\n  border-radius: 100%;\n  color: #fff;\n  cursor: pointer;\n} */\n\n/* .reset {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  cursor: pointer;\n  text-transform: uppercase;\n} */\n\n.menu {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n}\n\n.menu li {\n  cursor: pointer;\n  list-style: none;\n  float: right;\n  margin: 0 10px;\n}\n"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ".wrapper {\n  position: relative;\n  height: 100%;\n}\n\n.pit,
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"wrapper\">\n\n  <div class=\"pit\">\n    <div class=\"container\">\n      <div class=\"pit-title\">\n        P I T\n      </div>\n      <div [dragula]=\"'bag'\" class=\"pit-container\" id=\"pit1\">\n        <div *ngFor=\"let car of pit1Cars\" class=\"car-container\" id=\"{{ car.id }}\">\n          <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n        </div>\n      </div>\n      <div [dragula]=\"'bag'\" class=\"pit-container\" id=\"pit2\">\n        <div *ngFor=\"let car of pit2Cars\" class=\"car-container\" id=\"{{ car.id }}\">\n          <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n        </div>\n      </div>\n      <div [dragula]=\"'bag'\" class=\"pit-container\" id=\"pit3\">\n        <div *ngFor=\"let car of pit3Cars\" class=\"car-container\" id=\"{{ car.id }}\">\n          <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"lobby\">\n    <div class=\"lobby-title\">\n      L O B B Y\n    </div>\n    <div class=\"container\">\n      <div class=\"lobby-container\" [dragula]=\"'bag'\" id=\"lobby\">\n        <div *ngFor=\"let car of lobbyCars; let i = index\" class=\"car-container\" id=\"{{ car.id }}\">\n          <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n        </div>\n        <div class=\"create-new\" (click)=\"createNewCar()\">+</div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"reset\" (click)=\"resetData()\">Reset</div>\n\n</div>\n"
+module.exports = "<div class=\"wrapper\">\n\n  <div class=\"pit\">\n    <div class=\"container\">\n      <div class=\"pit-title\">\n        P I T\n      </div>\n      <div [dragula]=\"'bag'\" class=\"pit-container\" id=\"pit1\">\n        <div *ngFor=\"let car of pit1Cars\" class=\"car-container\" id=\"{{ car.id }}\">\n          <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n        </div>\n      </div>\n      <div [dragula]=\"'bag'\" class=\"pit-container\" id=\"pit2\">\n        <div *ngFor=\"let car of pit2Cars\" class=\"car-container\" id=\"{{ car.id }}\">\n          <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n        </div>\n      </div>\n      <div [dragula]=\"'bag'\" class=\"pit-container\" id=\"pit3\">\n        <div *ngFor=\"let car of pit3Cars\" class=\"car-container\" id=\"{{ car.id }}\">\n          <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"lobby\">\n    <div class=\"lobby-title\">\n      L O B B Y\n    </div>\n    <div class=\"container\">\n      <div class=\"lobby-container\" [dragula]=\"'bag'\" id=\"lobby\">\n        <div *ngFor=\"let car of lobbyCars; let i = index\" class=\"car-container\" id=\"{{ car.id }}\">\n          <car [car]=\"car\" (onSave)=\"saveGrid($event)\" (onDelete)=\"deleteCar($event)\"></car>\n        </div>\n        <!-- <div class=\"create-new\" (click)=\"createNewCar()\">+</div> -->\n      </div>\n    </div>\n  </div>\n\n  <ul class=\"menu\">\n    <li (click)=\"resetData()\">Reset</li>\n    <li (click)=\"createNewCar(5)\">Add 5 cars</li>\n    <li (click)=\"createNewCar()\">Add 1 car</li>\n  </ul>\n\n  <!-- <div class=\"reset\" (click)=\"resetData()\">Reset</div> -->\n\n</div>\n"
 
 /***/ }),
 
@@ -75,8 +75,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(storageService, dragulaService) {
+    function AppComponent(hostElement, storageService, dragulaService) {
         var _this = this;
+        this.hostElement = hostElement;
         this.storageService = storageService;
         this.dragulaService = dragulaService;
         dragulaService.drag.subscribe(function (value) {
@@ -88,7 +89,7 @@ var AppComponent = /** @class */ (function () {
                 var carObject = lodash__WEBPACK_IMPORTED_MODULE_1__["find"](_this.allCars, { id: +car.id });
                 carObject ? carObject.placement = to.id : null;
             }
-            _this.refreshIndexes();
+            _this.refreshAllIndexes();
             _this.saveGrid();
         });
         this.allCars = storageService.getData();
@@ -100,6 +101,9 @@ var AppComponent = /** @class */ (function () {
         this.pit3Cars = this.filterCarsByPlacement(this.allCars, 'pit3');
         this.lobbyCars = this.filterCarsByPlacement(this.allCars, 'lobby');
     }
+    AppComponent.prototype.ngOnInit = function () {
+        this.setDomElements();
+    };
     AppComponent.prototype.initCars = function () {
         var carsMock = [
             {
@@ -143,15 +147,22 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.saveGrid = function () {
         this.storageService.setData(this.allCars);
     };
-    AppComponent.prototype.createNewCar = function (car) {
-        this.allCars.push({
-            id: Date.now(),
-            name: 'new car',
-            placement: 'lobby',
-            color: 'green'
-        });
-        this.lobbyCars = this.filterCarsByPlacement(this.allCars, 'lobby');
-        this.storageService.setData(this.allCars);
+    AppComponent.prototype.createNewCar = function (amount) {
+        var _this = this;
+        if (amount === void 0) { amount = 1; }
+        while (amount > 0) {
+            setTimeout(function () {
+                _this.allCars.push({
+                    id: Date.now(),
+                    name: 'new car',
+                    placement: 'lobby',
+                    color: 'green'
+                });
+                _this.lobbyCars = _this.filterCarsByPlacement(_this.allCars, 'lobby');
+                _this.storageService.setData(_this.allCars);
+            }, 10);
+            amount--;
+        }
     };
     AppComponent.prototype.deleteCar = function (car) {
         lodash__WEBPACK_IMPORTED_MODULE_1__["remove"](this.allCars, { id: car.id });
@@ -162,9 +173,28 @@ var AppComponent = /** @class */ (function () {
         this.storageService.setData(this.allCars);
     };
     AppComponent.prototype.filterCarsByPlacement = function (allCars, placement) {
-        return lodash__WEBPACK_IMPORTED_MODULE_1__["filter"](allCars, { placement: placement });
+        return lodash__WEBPACK_IMPORTED_MODULE_1__["orderBy"](lodash__WEBPACK_IMPORTED_MODULE_1__["filter"](allCars, { placement: placement }), 'sortOrder');
     };
-    AppComponent.prototype.refreshIndexes = function () {
+    AppComponent.prototype.setDomElements = function () {
+        var host = this.hostElement.nativeElement;
+        this.pit1El = host.querySelector('#pit1');
+        this.pit2El = host.querySelector('#pit2');
+        this.pit3El = host.querySelector('#pit3');
+        this.lobbyEl = host.querySelector('#lobby');
+    };
+    AppComponent.prototype.refreshAllIndexes = function () {
+        this.refreshIndexes(this.pit1El);
+        this.refreshIndexes(this.pit2El);
+        this.refreshIndexes(this.pit3El);
+        this.refreshIndexes(this.lobbyEl);
+    };
+    AppComponent.prototype.refreshIndexes = function (elContainer) {
+        var _this = this;
+        var carElements = elContainer.querySelectorAll('.car-container');
+        lodash__WEBPACK_IMPORTED_MODULE_1__["each"](carElements, function (el, index) {
+            var carObj = lodash__WEBPACK_IMPORTED_MODULE_1__["find"](_this.allCars, { id: +el.id });
+            carObj ? carObj.sortOrder = index : null;
+        });
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -172,7 +202,8 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_services__WEBPACK_IMPORTED_MODULE_3__["StorageService"],
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"],
+            _services__WEBPACK_IMPORTED_MODULE_3__["StorageService"],
             ng2_dragula__WEBPACK_IMPORTED_MODULE_2__["DragulaService"]])
     ], AppComponent);
     return AppComponent;
